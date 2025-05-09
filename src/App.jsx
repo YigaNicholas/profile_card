@@ -4,7 +4,7 @@ import Avartar from './components/Avartar';
 
 const App = () => {
   return (
-    <div className='w-full min-h-screen bg-yellow-500 flex justify-center'>
+    <div className=''>
       hello world
       <Avartar/>
 
