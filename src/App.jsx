@@ -4,9 +4,8 @@ import Avartar from './components/Avartar';
 
 const App = () => {
   return (
-    <div className=''>
+    <div className='flex items-center justify-center w-full h-screen'>
       <Avartar/>
-
     </div>
   );
 };
