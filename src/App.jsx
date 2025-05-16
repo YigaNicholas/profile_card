@@ -10,12 +10,13 @@ import Navigation from './components/Navigation';
 import Sidebar from './components/Sidebar';
 import NotificationBell from './components/NotificationBell';
 import Counter from './components/Counter';
+import TodoList from './components/TodoList';
 
 
 const App = () => {
   return (
     <div>
-    <Counter/>
+    <TodoList/>
     
     
     
