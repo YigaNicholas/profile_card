@@ -47,7 +47,7 @@ export default function TodoList() {
         <input value={newTask} onChange={(e) => setNewTask(e.target.value)} placeholder="Add a task..." />
         <button onClick={addTask}>{editingIndex !== null ? "Update" : "Add"}</button>
       </div>
-      <div className="space-y-2">
+      <div className="space-y-2">{/*space between the list items */}
         {tasks.map((task, index) => (
           <li key={index} className="p-2 flex justify-between items-center">
             {task}

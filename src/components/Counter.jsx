@@ -16,7 +16,7 @@ function Counter(){
         setCount(0);
     }
     return(
-        <div className="text-center">
+        <div className="text-center just">
             <h1 className="text-xl text-blue-500">counter app designed by tailwind css and react</h1>
             <div className=" space-x-4">
             <p className="text-[10rem] font-semibold mt-0" >{count}</p>

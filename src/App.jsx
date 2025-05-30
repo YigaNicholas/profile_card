@@ -1,27 +1,46 @@
 import React from 'react';
-import Avartar from './components/Avartar';
-
-import ModernProduct from './components/ModernProduct';
-import Animated from './components/Animated';
-import Outline from './components/Outline';
-import Primary from './components/Primary';
-import Profile from './components/Profile';
-import Navigation from './components/Navigation';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import Sidebar from './components/Sidebar';
-import NotificationBell from './components/NotificationBell';
-import Counter from './components/Counter';
-import TodoList from './components/TodoList';
+import Dashboard from './components/pages/Dashboard';
+import Team from './components/pages/Team';
+import Login from './components/login';
 
 
-const App = () => {
+
+function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check if user is already authenticated
+    const authStatus = localStorage.getItem('isAuthenticated') === 'true';
+    setIsAuthenticated(authStatus);
+  }, []);
+
   return (
-    <div>
-    <TodoList/>
-    
-    
-    
-    </div>
+    <Router>
+      <Sidebar isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />
+      
+      <Routes>
+        <Route 
+          path="/login" 
+          element={isAuthenticated ? <Navigate to="/dashboard" /> : <Login setIsAuthenticated={setIsAuthenticated} />} 
+        />
+        <Route 
+          path="/dashboard" 
+          element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} 
+        />
+        <Route 
+          path="/team" 
+          element={isAuthenticated ? <Team /> : <Navigate to="/login" />} 
+        />
+        <Route 
+          path="/" 
+          element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} />} 
+        />
+      </Routes>
+    </Router>
   );
-};
+}
 
 export default App;
